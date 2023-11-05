@@ -1,4 +1,5 @@
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
 import './App.css';
 import { Outlet } from 'react-router-dom';
 import Auth from './utils/auth'
