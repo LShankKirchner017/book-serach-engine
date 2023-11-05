@@ -28,7 +28,7 @@ db.once('open',  async () => {
   await apolloServer.start()
 
  app.use('/graphql', expressMiddleware(apolloServer, {
-  context: async ({req }) => console.log(req.headers.token)
+  // context: async ({req }) => console.log(req.headers.token)
  }))
 
  console.log(`GraphQL Playground found at http://localhost:${PORT}/graphql`)

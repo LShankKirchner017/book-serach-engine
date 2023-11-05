@@ -1,18 +1,38 @@
+const { User } = require('../models')
+const { GraphQLError } = require('graphql')
+
 module.exports = {
   Query: {
-    getSingleUser: (parent, args, context, info) => {},
+    getSingleUser: async (parent, {_id, username }, context, info) => {
+       const foundUser = await User.findOne({
+      $or: [{ _id }, { username}],
+    });
+
+    if (!foundUser) {
+      throw new GraphQLError('Cannot find a user with this id!', {
+        extensions: {
+          code: "NO_USER_FOUND"
+        }
+
+      })
+      
+    }
+
+   return foundUser
+
+    },
   },
   Mutation: {
-    createUser: (parent, args, context, info) => { 
+    createUser: async (parent, args, context, info) => { 
 
     },
-   login: (parent, args, context, info) => {
+   login: async (parent, args, context, info) => {
 
     },
-    saveBook: (parent, args, context, info) => {
+    saveBook: async (parent, args, context, info) => {
 
     },
-    deleteBook: (parent, args, context, info) => {
+    deleteBook: async (parent, args, context, info) => {
 
     },
   

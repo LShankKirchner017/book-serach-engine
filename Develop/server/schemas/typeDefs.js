@@ -1,5 +1,6 @@
 const typeDefs = `
     type Book {
+        _id: ID
         authors: [String]
         description: String!
         bookId: String!
@@ -9,6 +10,7 @@ const typeDefs = `
     }
 
     input BookInput {
+        _id: ID
         authors: [String]
         description: String
         bookId: String
@@ -18,12 +20,14 @@ const typeDefs = `
     }
 
     type User {
+        _id: ID
         username: String!
         email: String!
         savedBooks: [Book]
     }
 
     input UserInput {
+        _id: ID
         username: String
         email: String
         savedBooks: [BookInput]
@@ -35,7 +39,7 @@ const typeDefs = `
     }
 
     type Query {
-        getSingleUser(id: ID, username: String): User
+        getSingleUser(_id: ID, username: String): User
         
     }
 
