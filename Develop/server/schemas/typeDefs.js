@@ -8,7 +8,7 @@ const typeDefs = `
         title: String!
     }
 
-    input Book {
+    input BookInput {
         authors: [String]
         description: String
         bookId: String
@@ -36,7 +36,7 @@ const typeDefs = `
 
     type Query {
         getSingleUser(id: ID, username: String): User
-        c
+        
     }
 
     type Mutation {
